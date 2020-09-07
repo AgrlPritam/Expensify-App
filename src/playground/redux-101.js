@@ -20,7 +20,12 @@ const setCount = ({ count }) => ({
     count
 })
 
-const store = createStore((state = { count:0 }, action) => {
+//Reducers
+//1.Reducers are pure functions (All variables or parameters declared are having scope within the function and the output also doesn't affect anything beyond the function)
+//2.Never change state or action
+
+
+const countReducer = (state = { count:0 }, action) => {
     switch (action.type) {
         case 'INCREMENT':
             //const incrementBy = typeof action.incrementBy==='number' ? action.incrementBy : 1;
@@ -43,7 +48,9 @@ const store = createStore((state = { count:0 }, action) => {
         default:
             return state
     }
-})
+}
+
+const store = createStore(countReducer)
 
 //function in store.subscribe gets called everytime the store changes. 
 const unsubscribe = store.subscribe(() => {
