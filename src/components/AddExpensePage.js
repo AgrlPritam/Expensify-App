@@ -5,7 +5,7 @@ import {addExpense} from '../actions/expenses'
 
 export class AddExpensePage extends React.Component {
     onSubmit = (expense) => {
-        this.props.onSubmit(expense)                 
+        this.props.addExpense(expense)                 
         this.props.history.push('/')      //This is taken from react components from browser from addExpense--> history-->push function
     }
     render() {
@@ -22,7 +22,7 @@ export class AddExpensePage extends React.Component {
 
 //This function is added for making test cases easy
 const mapDispatchToProps = (dispatch) => ({         //check react-redux docs
-    onSubmit: (expense) => dispatch(addExpense(expense))
+    addExpense: (expense) => dispatch(addExpense(expense))
 })
 
 export default connect(undefined, mapDispatchToProps)(AddExpensePage);
