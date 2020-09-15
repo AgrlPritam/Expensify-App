@@ -3,5 +3,10 @@ const { merge } = require('webpack-merge');
 
  module.exports = merge(common, {
    mode: 'production',
-   devtool: '#source-map'
+   devtool: '#source-map',
+   devServer: {         
+    contentBase: path.join(__dirname, 'public'),
+    historyApiFallback: true,
+    publicPath: '/dist/'
+},
  });
