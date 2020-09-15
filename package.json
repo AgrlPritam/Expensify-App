@@ -5,10 +5,11 @@
   "license": "MIT",
   "scripts": {
     "server": "live-server public/",
-    "node-server": "nodemon server/server.js",
+    "start": "nodemon server/server.js",
     "build": "webpack --config webpack.prod.js",
     "dev-server": "webpack-dev-server --open --config webpack.dev.js",
-    "test": "jest --config=jest.config.json"
+    "test": "jest --config=jest.config.json",
+    "heroku-postbuild": "yarn run build"
   },
   "dependencies": {
     "@babel/core": "^7.11.5",
