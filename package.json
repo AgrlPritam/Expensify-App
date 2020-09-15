@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "server": "live-server public/",
+    "node-server": "nodemon server/server.js",
     "build": "webpack --config webpack.prod.js",
     "dev-server": "webpack-dev-server --open --config webpack.dev.js",
     "test": "jest --config=jest.config.json"
@@ -22,11 +23,13 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.4",
     "enzyme-to-json": "^3.5.0",
+    "express": "^4.17.1",
     "jest": "^26.4.2",
     "live-server": "^1.2.1",
     "mini-css-extract-plugin": "^0.11.2",
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
+    "nodemon": "^2.0.4",
     "normalize.css": "^8.0.1",
     "raf": "^3.4.1",
     "react": "^16.13.1",
