@@ -19,19 +19,16 @@ module.exports = {
         }, {
             test: /\.s?css$/,
             use: [
-                MiniCSSExtractPlugin.loader,
                 {
-                    loader: 'css-loader',
+                    loader: MiniCSSExtractPlugin.loader,
                     options: {
-                        sourceMap: true
-                    }
+                      publicPath: (resourcePath, context) => {
+                        return path.relative(path.dirname(resourcePath), context) + '/';
+                      },
+                    },
                 },
-                {
-                    loader: 'sass-loader',
-                    options: {
-                        sourceMap: true
-                    }
-                }
+                'css-loader',
+                'sass-loader',
             ]
         }]
     },
