@@ -1,6 +1,18 @@
 import { createStore,combineReducers } from 'redux'
 import {v4 as uuidv4} from 'uuid'
 
+//Synchronous Action --> Limited to action generators:
+// component calls action generator
+// action generator returns "Object"
+// component dispathes object
+// redux store changes
+
+//Asynchronous Action --> Limited to action Generators:
+// component calls action generator
+// action generator returns "function"
+// component dispathes function (?)     ***IMPORTANT --> Redux doesn't allow dispatching functions by default
+// Function runs (has the ability to dispatch other actions and do whatever it wants)
+
 //Add_Expense
 
 const addExpense = (
