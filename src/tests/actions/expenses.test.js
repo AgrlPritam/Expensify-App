@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import {startAddExpense,addExpense, editExpense, removeExpense} from '../../actions/expenses'
 import {expenses} from '../fixtures/expenses'
 import database from '../../firebase/firebase'
+import regeneratorRuntime from "regenerator-runtime";
 
 const createMockStore = configureMockStore([thunk])
 
@@ -52,11 +53,28 @@ test('Should add expense to database and store', async () => {
     })
     const snapshot = await database.ref(`expenses/${actions[0].expense.id}`).once('value')
         expect(snapshot.val()).toEqual(expenseData)
-    })
-
-test('Should add expense with defaults to database and store',() => {
-    //
 })
+
+test('Should add expense with defaults to database and store',async () => {
+    const store = createMockStore({})
+    const expenseDefault = {
+        description: '',
+        amount: 0,
+        note: '',
+        createdAt: 0
+    }           
+    await store.dispatch(startAddExpense({}))
+    const actions = store.getActions()
+    expect(actions[0]).toEqual({
+        type: 'ADD_EXPENSE',
+        expense : {
+            id: expect.any(String),
+            ...expenseDefault
+        }
+    })
+    const snapshot = await database.ref(`expenses/${actions[0].expense.id}`).once('value')
+        expect(snapshot.val()).toEqual(expenseDefault)
+})    
 // test('Should Setup Add Expense Action Object with default values',() => {
 //     const action = startAddExpense()
 //     expect(action).toEqual({
