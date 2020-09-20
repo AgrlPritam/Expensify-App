@@ -15,28 +15,36 @@ firebase.initializeApp(firebaseConfig)
 
 const database = firebase.database();
 
-database.ref().set({
-    name: 'Pritam Agrawal',
-    age: 25,
-    issingle: false,
-    location: {
-        city: 'Bangalore',
-        country: 'INDIA'
-    }
-}).then(() => {
-    console.log('Data saved!!!');
-}).catch((e) => {
-    console.log('error:', e);
-})
+export { firebase, database as default }
 
-//database.ref().set('This is my data')
+// database.ref('expenses').on('value', (snapshot) => {
+//     const expenses = [];
+//     snapshot.forEach((childSnapshot) => {
+//         expenses.push({
+//             id: childSnapshot.key,
+//             ...childSnapshot.val()
+//         })
+//     })
+//     console.log(expenses);
+// })
 
-database.ref('age').set(27)
-database.ref('location/city').set('Bhubaneswar')
-//attributes
-//  height
-//  weight
-database.ref('attributes').set({
-    height: '180.34 cms',
-    weight: '83 Kgs'
-})
+// //Child Removed
+// database.ref('expenses').on('child_removed', (snapshot) => {
+//     console.log(snapshot.key, snapshot.val());
+// })
+
+// //Child_Changed
+// database.ref('expenses').on('child_changed', (snapshot) => {
+//     console.log(snapshot.key, snapshot.val());
+// })
+
+// //Child_Added
+// database.ref('expenses').on('child_added', (snapshot) => {
+//     console.log(snapshot.key, snapshot.val());
+// })
+// database.ref('expenses').push({
+//     description: 'Flight',
+//     note: '',
+//     amount: 7000,
+//     createdAt: 715192341651
+// })
