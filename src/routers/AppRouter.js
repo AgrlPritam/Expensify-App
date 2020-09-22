@@ -1,5 +1,6 @@
-import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom'
+import { Router, Route, Switch, Link, NavLink } from 'react-router-dom'
 import React from 'react'
+import createHistory from 'history/createBrowserHistory'
 import  Header from '../components/Header';
 import  EditExpense from '../components/EditExpensePage';
 import  Dashboard from '../components/ExpenseDashboardPage';
@@ -8,8 +9,10 @@ import  AddExpense from '../components/AddExpensePage';
 import  HelpPage from '../components/HelpPage';
 import  NotFoundPage from '../components/NotFoundPage';
 
-const AppRouter = () => (
-    <BrowserRouter>
+export const history = createHistory();
+
+const AppRouter = () => (       //from <BrowserRouter> below we went to Router as we need history function to pass so that login route can be handled and expense dashboard can be rendered as per our need. BrowserRouter has its own history built-in
+    <Router history={history}>          
     <div>
         <Header />
         <Switch>
@@ -21,7 +24,7 @@ const AppRouter = () => (
             <Route component={NotFoundPage}/>
         </Switch> 
     </div>       
-    </BrowserRouter>
+    </Router>
 )
 
 export default AppRouter;
