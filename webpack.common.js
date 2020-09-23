@@ -36,7 +36,13 @@ module.exports = {
                       },
                     },
                 },
-                'css-loader',
+                {
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap:true,
+                        url: false
+                    }
+                },
                 'sass-loader',
             ]
         }]
