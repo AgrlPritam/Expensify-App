@@ -1,5 +1,5 @@
 //entry --> output
-const path = require('path')
+const path = require('path') 
 const webpack = require('webpack')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 
@@ -12,7 +12,7 @@ if(process.env.NODE_ENV === 'test') {
 }
 
 module.exports = {
-    entry:'./src/app.js',
+    entry:['core-js/stable','./src/app.js'],
     output: {
         path:path.join(__dirname,'public','dist'),
         filename: 'bundle.js'
