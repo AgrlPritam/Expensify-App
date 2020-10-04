@@ -37,5 +37,11 @@ exports[`Should render EditExpensePage 1`] = `
       Remove Expense
     </button>
   </div>
+  <div>
+    <ExpenseRemoveModal
+      handleClearPromptRemoveExpense={[Function]}
+      onRemoveConfirm={[Function]}
+    />
+  </div>
 </div>
 `;
